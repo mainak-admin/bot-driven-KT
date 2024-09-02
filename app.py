@@ -44,55 +44,124 @@ st.set_page_config(page_title="Bot Driven Knowledge Transfer", page_icon=":robot
 st.markdown(
     """
     <style>
-    .stApp {
-        background-color: #0096FF; /* Light cyan background color */
-    }
-    .stTextInput > div > input {
-        background-color: rgba(255, 255, 255, 0.8);
-        color: #000000; /* Change text color to black */
-        border-radius: 5px;
-        padding: 10px;
-    }
-    .main {
-        background-color: rgba(255, 255, 255, 0.8); /* Change background to white */
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        color: #000000; /* Change text color to black */
-    }
-    .stButton button {
-        background-color: #1a73e8;
-        color: #000000; /* Change text color to black */
-        border-radius: 5px;
-        padding: 10px 20px;
-        font-size: 16px;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
-    }
-    .stButton button:hover {
-        background-color: #0c5dbf;
-    }
-    .stMarkdown {
-        color: #000000; /* Change text color to black */
-    }
-    .stSidebar {
-        background-color: #ffffff;
-    }
-    .stSidebar .stTitle {
-        color: #000000; /* Change text color to black */
-    }
-    .footer {
-        text-align: center;
-        color: #000000; /* Change text color to black */
-        font-size: 12px;
-        margin-top: 20px;
-    }
-    .stTitle {
-        color: #ffffff; /* Change title text color to white */
-    }
-    .stMarkdown h2 {
-        color: #ffffff; /* Ensure h2 text (e.g., Ask a Question) is white */
-    }
+        /* Chat Avatar Background Colors */
+        div:has(> div[data-testid="chatAvatarIcon-user"]) {
+            background-color: #e0f2ff;
+        }
+        div:has(> div[data-testid="chatAvatarIcon-assistant"]) {
+            background-color: #efe5f6;
+        }
+
+        /* Sidebar Background */
+        div[data-testid="stSidebarContent"] {
+            background: rgb(204,250,241);
+            background: linear-gradient(59deg, rgba(100, 8, 190, 0.81) 0%, rgba(226, 221, 231, 0.95) 49%, rgba(192, 28, 229, 0.81) 100%);
+        }
+
+        /* Header Background */
+        div[height="70"] {
+            background-color: #ffff;
+            text-align: center;
+            background-radius: 0.4em;
+            border-radius: 0.4em;
+        }
+
+        /* Main Header Text */
+        h1 {
+            font-family: Google Sans, Helvetica Neue, sans-serif;
+            font-size: 2.0rem;
+            color: #000000;
+        }
+
+        /* Chat Input Background and Text Color */
+        div[data-testid="stChatInput"] {
+            background: rgb(244, 222, 232);
+            background: linear-gradient(90deg, rgba(244, 222, 232, 1) 0%, rgba(211, 226, 245, 1) 100%);
+            color: #000000; /* Change input text color to black */
+        }
+
+        /* Customizing the placeholder text ("Type your question here") */
+        ::placeholder {
+            color: #000000; /* Change placeholder text color to black */
+            opacity: 1; /* Override default placeholder opacity */
+        }
+
+        /* Main App Background */
+        .stApp {
+            background: rgba(14, 27, 255, 1);
+            background: linear-gradient(30deg, rgba(14, 4, 247, 0.73) 0%, rgba(14, 4, 228, 0.1) 49%, rgba(14, 27, 255, 1) 100%);
+        }
+
+        /* Text Input Style */
+        .stTextInput > div > input {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #000000; /* Change text color to black */
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        /* Main Container Style */
+        .main {
+            background-color: rgba(255, 255, 255, 0.8); /* Change background to white */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: #000000; /* Change text color to black */
+        }
+
+        /* Button Style */
+        .stButton button {
+            background-color: #1a73e8;
+            color: #ffffff; /* Change text color to white */
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Button Hover Effect */
+        .stButton button:hover {
+            background-color: #0c5dbf;
+        }
+
+        /* Markdown Text Style */
+        .stMarkdown {
+            color: #000000; /* Change text color to black */
+        }
+
+        /* Sidebar Background Color */
+        .stSidebar {
+            background-color: #ffffff;
+        }
+
+        /* Sidebar Title Text Color */
+        .stSidebar .stTitle {
+            color: #000000; /* Change text color to black */
+        }
+
+        /* Cognizant Technology Solutions Text Color */
+        .stMarkdown p {
+            color: #000000; /* Change text color to black for paragraphs */
+        }
+
+        /* Footer Style */
+        .footer {
+            text-align: center;
+            color: #000000; /* Change text color to black */
+            font-size: 12px;
+            margin-top: 20px;
+        }
+
+        /* Title Style */
+        .stTitle {
+            color: #ffffff; /* Change title text color to white */
+        }
+
+        /* H2 Text Color in Markdown */
+        .stMarkdown h2 {
+            color: #ffffff; /* Ensure h2 text (e.g., Ask a Question) is white */
+        }
     </style>
     """, unsafe_allow_html=True
 )
@@ -102,7 +171,8 @@ st.markdown(
 st.image("D:\\Hackathon\\bot-driven-KT\\cognizant.jpeg", use_column_width=False, width=200, caption="Cognizant Technology Solutions")
 
 # Add the main header and sub-header
-st.title("Bot Driven Knowledge Transfer Chatbot :robot_face:")
+st.title("Bot Driven Knowledge Transfer Chatbot")
+st.image("D:\\Hackathon\\bot-driven-KT\\chat-bot.png", width=50)
 st.markdown("**Ask questions and get insights for any application effortlessly.**")
 st.markdown("---")
 
